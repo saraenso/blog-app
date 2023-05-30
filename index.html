@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Blog App</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <section class="blog-app">
+      <div class="container">
+        <ul class="blog-app__inner">
+          <li class="blog-app__column">
+            <h1 class="new-post-header">Новый пост</h1>
+
+            <div class="post-creating-items">
+              <textarea
+                class="js-post-title-input post-title-input"
+                type="text"
+                placeholder="Заголовок"
+                cols="35"
+                rows="2"
+              ></textarea>
+              <textarea
+                class="js-post-content-input post-content-input"
+                type="text"
+                placeholder="Напиши пост"
+                cols="35"
+                rows="6"
+              ></textarea>
+              <button
+                class="js-post-publish-btn post-publish-btn"
+                type="submit"
+              >
+                <p class="post-publish-btn__text">Опубликовать</p>
+              </button>
+              <button class="js-post-delete-btn post-delete-btn" type="submit">
+                <p class="post-publish-btn__text">Очистить историю</p>
+              </button>
+              <div class="js-title-warning warning" style="display: none"></div>
+              <div class="js-content-warning warning" style="display: none"></div>
+            </div>
+          </li>
+
+          <li class="blog-app__column">
+            <h2 class="feed-header">Лента</h2>
+            <ul class="js-feed feed"></ul>
+            <p class="js-empty-feed-message empty-feed-message">Тут пока что пусто...</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <script src="index.js"></script>
+  </body>
+</html>
