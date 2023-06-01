@@ -37,17 +37,23 @@ postPublishBtnNode.addEventListener('click', () => {
   const title = postTitleInputNode.value;
   const content = postContentInputNode.value;
 
-  // Проверяем заголовок на пустоту
+  // Проверяем заголовок на пустоту и длину
   if (isEmpty(title)) {
     displayWarning(titleWarningNode, 'Заголовок не может быть пустым');
+    return;
+  } else if (title.length > maxTitleLength) {
+    displayWarning(titleWarningNode, 'Заголовок больше 100 символов');
     return;
   } else {
     hideWarning(titleWarningNode);
   }
 
-  // Проверяем содержание поста на пустоту
+  // Проверяем содержание поста на пустоту и длину
   if (isEmpty(content)) {
     displayWarning(contentWarningNode, 'Пост не может быть пустым');
+    return;
+  } else if (content.length > maxContentLength) {
+    displayWarning(contentWarningNode, 'Пост больше 200 символов');
     return;
   } else {
     hideWarning(contentWarningNode);
