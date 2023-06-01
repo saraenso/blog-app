@@ -8,28 +8,46 @@ const titleWarningNode = document.querySelector('.js-title-warning');
 const contentWarningNode = document.querySelector('.js-content-warning');
 const emptyFeedMessageNode = document.querySelector('.js-empty-feed-message');
 
+// Максимальная длина заголовка и содержания
+const maxTitleLength = 100;
+const maxContentLength = 200;
+
+// Обработчик события ввода в поле заголовка
+postTitleInputNode.addEventListener('input', () => {
+  const title = postTitleInputNode.value;
+  if (title.length > maxTitleLength) {
+    displayWarning(titleWarningNode, 'Заголовок больше 100 символов');
+  } else {
+    hideWarning(titleWarningNode);
+  }
+});
+
+// Обработчик события ввода в поле содержания
+postContentInputNode.addEventListener('input', () => {
+  const content = postContentInputNode.value;
+  if (content.length > maxContentLength) {
+    displayWarning(contentWarningNode, 'Пост больше 200 символов');
+  } else {
+    hideWarning(contentWarningNode);
+  }
+});
+
 // Обработчик события клика на кнопку 'Опубликовать'
 postPublishBtnNode.addEventListener('click', () => {
   const title = postTitleInputNode.value;
   const content = postContentInputNode.value;
 
-  // Проверяем заголовок на пустоту и длину
+  // Проверяем заголовок на пустоту
   if (isEmpty(title)) {
     displayWarning(titleWarningNode, 'Заголовок не может быть пустым');
-    return;
-  } else if (isTooLong(title, 100)) {
-    displayWarning(titleWarningNode, 'Заголовок больше 100 символов');
     return;
   } else {
     hideWarning(titleWarningNode);
   }
 
-  // Проверяем содержание поста на пустоту и длину
+  // Проверяем содержание поста на пустоту
   if (isEmpty(content)) {
     displayWarning(contentWarningNode, 'Пост не может быть пустым');
-    return;
-  } else if (isTooLong(content, 200)) {
-    displayWarning(contentWarningNode, 'Пост больше 200 символов');
     return;
   } else {
     hideWarning(contentWarningNode);
@@ -72,11 +90,6 @@ restorePosts();
 // Функция для проверки строки на пустоту
 function isEmpty(str) {
   return str.trim() === '';
-}
-
-// Функция для проверки строки на превышение заданной длины
-function isTooLong(str, maxLength) {
-  return str.length > maxLength;
 }
 
 // Функция для отображения предупреждения
