@@ -16,7 +16,7 @@ const maxContentLength = 200;
 postTitleInputNode.addEventListener('input', () => {
   const title = postTitleInputNode.value;
   if (title.length > maxTitleLength) {
-    displayWarning(titleWarningNode, 'Заголовок больше 100 символов');
+    displayWarning(titleWarningNode, 'Заголовок больше ' + maxTitleLength + ' символов');
   } else {
     hideWarning(titleWarningNode);
   }
@@ -26,7 +26,7 @@ postTitleInputNode.addEventListener('input', () => {
 postContentInputNode.addEventListener('input', () => {
   const content = postContentInputNode.value;
   if (content.length > maxContentLength) {
-    displayWarning(contentWarningNode, 'Пост больше 200 символов');
+    displayWarning(contentWarningNode, 'Пост больше ' + maxContentLength + ' символов');
   } else {
     hideWarning(contentWarningNode);
   }
@@ -42,7 +42,7 @@ postPublishBtnNode.addEventListener('click', () => {
     displayWarning(titleWarningNode, 'Заголовок не может быть пустым');
     return;
   } else if (title.length > maxTitleLength) {
-    displayWarning(titleWarningNode, 'Заголовок больше 100 символов');
+    displayWarning(titleWarningNode, 'Заголовок больше ' + maxTitleLength + ' символов');
     return;
   } else {
     hideWarning(titleWarningNode);
@@ -53,7 +53,7 @@ postPublishBtnNode.addEventListener('click', () => {
     displayWarning(contentWarningNode, 'Пост не может быть пустым');
     return;
   } else if (content.length > maxContentLength) {
-    displayWarning(contentWarningNode, 'Пост больше 200 символов');
+    displayWarning(contentWarningNode, 'Пост больше ' + maxContentLength + ' символов');
     return;
   } else {
     hideWarning(contentWarningNode);
